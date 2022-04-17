@@ -14,7 +14,9 @@
 
 int main()
 {
-    int opcion=0;
+	setbuf(stdout, NULL);
+
+    int opcion = 0;
     float precioIngresado = 0;
     float aerolineas;
     float latam;
@@ -31,20 +33,21 @@ int main()
     float valorBitcoinLatam;
     float precioUnitarioLatam;
     float diferenciaIngresadaTotal;
-    int banderaValidacionKm = 0;
+    int banderaValidacionKm = 0;                                      //declaro e inicializo las banderas
     int banderaValidacionVuelo = 0;
     int banderaValidacionCalculos = 0;
     int banderaValidacionInforme = 0;
 
     do
     {
+
         switch(menu())
         {
             case 1: opcionUno(kilometros, &banderaValidacionKm);
 
                     break;
             case 2:
-                    if(banderaValidacionKm>0)
+                    if(banderaValidacionKm > 0)
                     {
                         switch(opcionDos(precioIngresado, &banderaValidacionVuelo))
                         {
@@ -53,18 +56,17 @@ int main()
                             case 2: latam=precioIngresado;
                             break;
                         }
-
                     }
                     else
                     {
-                        if(banderaValidacionKm<0)
+                        if(banderaValidacionKm < 0)
                         {
                             printf("Error. No se puede ingresar la aerolinea correspondiente sin antes haber ingresado los kilometros.");
 
                         }
                     }
                             break;
-            case 3:  if(banderaValidacionVuelo>0)
+            case 3:  if(banderaValidacionVuelo > 0)
             {
 
                 opcionTres(&banderaValidacionCalculos, bitcoin, interesValor, porcentaje, aerolineas, latam, kilometros, &descuentoAerolineas,
@@ -73,7 +75,7 @@ int main()
             }
             else
             {
-                if(banderaValidacionVuelo<0)
+                if(banderaValidacionVuelo < 0)
                 {
                     printf("Error. No se pueden realizar los calculos correspondientes por que faltan ingresar datos.");
 
@@ -116,6 +118,8 @@ int main()
         }
 
     }while(opcion != 6);
+
+    printf("Fin del programa!.");
 
     return opcion;
 }
