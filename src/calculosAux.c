@@ -10,7 +10,7 @@ float descuento(int porcentaje, float precioVuelo)
     float porcentajeDescuento;
     float descuentoTotal;
 
-    porcentajeDescuento = (precioVuelo*porcentaje) / 100;
+    porcentajeDescuento = precioVuelo * porcentaje / 100;
     descuentoTotal = precioVuelo-porcentajeDescuento;
 
     return descuentoTotal;
@@ -22,7 +22,7 @@ float interes(int interesValor, float precioVuelo)
     float porcentajeInteres;
     float precioConInteres;
 
-    porcentajeInteres = (precioVuelo*interesValor)/100;
+    porcentajeInteres = precioVuelo * interesValor /100;
     precioConInteres = precioVuelo+porcentajeInteres;
 
     return precioConInteres;

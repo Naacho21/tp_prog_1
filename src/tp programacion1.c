@@ -17,10 +17,9 @@ int main()
 	setbuf(stdout, NULL);
 
     int opcion = 0;
-    float precioIngresado = 0;
     float aerolineas;
     float latam;
-    float kilometros = 0;
+    float kilometros;
     int porcentaje = 10;
     int interesValor = 25;
     float bitcoin = 4606954.55;
@@ -43,23 +42,18 @@ int main()
 
         switch(menu())
         {
-            case 1: opcionUno(kilometros, &banderaValidacionKm);
-
+            case 1: opcionUno(kilometros);
+            		banderaValidacionKm++;
                     break;
             case 2:
                     if(banderaValidacionKm > 0)
                     {
-                        switch(opcionDos(precioIngresado, &banderaValidacionVuelo))
-                        {
-                            case 1: aerolineas=precioIngresado;
-                            break;
-                            case 2: latam=precioIngresado;
-                            break;
-                        }
+                       opcionDos(&aerolineas, &latam);
+                        banderaValidacionVuelo++;
                     }
                     else
                     {
-                        if(banderaValidacionKm < 0)
+                        if(banderaValidacionKm == 0)
                         {
                             printf("Error. No se puede ingresar la aerolinea correspondiente sin antes haber ingresado los kilometros.");
 
@@ -69,13 +63,15 @@ int main()
             case 3:  if(banderaValidacionVuelo > 0)
             {
 
-                opcionTres(&banderaValidacionCalculos, bitcoin, interesValor, porcentaje, aerolineas, latam, kilometros, &descuentoAerolineas,
+                opcionTres(bitcoin, interesValor, porcentaje, aerolineas, latam, kilometros, &descuentoAerolineas,
                                &interesAerolineas, &valorBitcoinAerolineas, &precioUnitarioAerolineas, &descuentoLatam,
                                &interesLatam, &valorBitcoinLatam, &precioUnitarioLatam, &diferenciaIngresadaTotal);
+
+                banderaValidacionCalculos++;
             }
             else
             {
-                if(banderaValidacionVuelo < 0)
+                if(banderaValidacionVuelo == 0)
                 {
                     printf("Error. No se pueden realizar los calculos correspondientes por que faltan ingresar datos.");
 
@@ -84,15 +80,16 @@ int main()
             }
 
                             break;
-            case 4: if(banderaValidacionCalculos>0)
+            case 4: if(banderaValidacionCalculos > 0)
             {
-                informarResultados(&banderaValidacionInforme, descuentoAerolineas, interesAerolineas, valorBitcoinAerolineas,
+                informarResultados(descuentoAerolineas, interesAerolineas, valorBitcoinAerolineas,
                                         precioUnitarioAerolineas, descuentoLatam, interesLatam, valorBitcoinLatam,
                                         precioUnitarioLatam, diferenciaIngresadaTotal);
+                banderaValidacionInforme++;
             }
             else
             {
-                if(banderaValidacionCalculos<0)
+                if(banderaValidacionCalculos == 0)
                 {
                     printf("Error. No se pueden informar sobre los costos cuando falta el ingreso de datos.");
 
@@ -100,21 +97,12 @@ int main()
             }
 
                             break;
-            case 5: if(banderaValidacionInforme>0)
+            case 5:
             {
-                cargaForzadaDeDatos(kilometros, porcentaje, bitcoin, interesValor, latam,
-                                        aerolineas);
-            }
-            else
-            {
-                if(banderaValidacionInforme<0)
-                {
-                    printf("Error. No se puede mostrar la carga forzada cuando faltan ingresar datos.");
-                }
-
+                cargaForzadaDeDatos(&kilometros, &aerolineas, &latam, porcentaje, bitcoin, interesValor);
             }
 
-                            break;
+            				break;
         }
 
     }while(opcion != 6);

@@ -4,7 +4,7 @@
                                                         //Guardo las funciones de menu.c
 int menu();
 
-int opcionUno(float kilometros, int* banderaValidacionKm);
+int opcionUno(float kilometros);
 
 /**
       *Descripcion: Se ingresan los kilometros
@@ -16,7 +16,7 @@ int opcionUno(float kilometros, int* banderaValidacionKm);
       */
 
 
-int opcionDos(float precioIngresado, int* banderaValidacionVuelo);
+int opcionDos(float* aerolineas, float* latam);
 
 /**
 	 * Descripcion: Se elige la aerolinea de vuelo, solo 5 intentos
@@ -29,7 +29,7 @@ int opcionDos(float precioIngresado, int* banderaValidacionVuelo);
 	 */
 
 
-void opcionTres(int* banderaValidacionCalculos, float bitcoin, int interesValor, int porcentaje, float aerolineas, float latam, float kilometros, float* descuentoAerolineas,
+void opcionTres(float bitcoin, int interesValor, int porcentaje, float aerolineas, float latam, float kilometros, float* descuentoAerolineas,
                float* interesAerolineas, float* valorBitcoinAerolineas, float* precioUnitarioAerolineas, float* descuentoLatam,
                float* interesLatam, float* valorBitcoinLatam, float* precioUnitarioLatam, float* diferenciaIngresadaTotal);
 
@@ -57,7 +57,7 @@ void opcionTres(int* banderaValidacionCalculos, float bitcoin, int interesValor,
 
 
 
-void informarResultados(int* banderaValidacionInforme, float descuentoaAerolineas, float interesAerolineas, float valorBitcoinAerolineas,
+void informarResultados(float descuentoaAerolineas, float interesAerolineas, float valorBitcoinAerolineas,
                         float precioUnitarioAerolineas, float descuentoLatam, float interesLatam, float valorBitcoinLatam,
                         float precioUnitarioLatam, float diferenciaIngresadaTotal);
 
@@ -79,17 +79,16 @@ void informarResultados(int* banderaValidacionInforme, float descuentoaAerolinea
 	 */
 
 
-void cargaForzadaDeDatos(float kilometros, int porcentaje, float bitcoin, int interesValor, float latam, float aerolineas); //Se muestran los datos ya pre-establecidos (hardcoeados)
-
+void cargaForzadaDeDatos (float* kilometros, float* aerolineas, float* latam, int porcentaje, float bitcoin, int interesValor);
 /**
 	 * Descripcion: //Ingreso los datos pre-cargados (hardocodeados)
 	 *
-	 *parametro: float kilometros
+	 *parametro: float kilometrosForzada
 	 *parametro: int porcentaje
 	 *parametro: float bitcoin
 	 *parametro: int interesValor
-	 *parametro: latam
-	 *parametro: aerolineas
+	 *parametro: latamForzada
+	 *parametro: aerolineasForzada
 	 *
 	 *return void
 	 */
